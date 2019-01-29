@@ -2,7 +2,7 @@ import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunkMiddleware from "redux-thunk";
 
-const exampleInitialState = {
+const initialState = {
   lastUpdate: 0,
   light: false,
   count: 0
@@ -14,7 +14,7 @@ export const actionTypes = {
 };
 
 // REDUCERS
-export const reducer = (state = exampleInitialState, action) => {
+export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.TICK:
       return Object.assign({}, state, {
@@ -46,7 +46,7 @@ export const addCount = () => dispatch => {
   return dispatch({ type: actionTypes.ADD });
 };
 
-export const initStore = (initialState = exampleInitialState) => {
+export const initStore = (initialState = initialState) => {
   return createStore(
     reducer,
     initialState,
